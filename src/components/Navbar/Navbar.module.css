@@ -1,0 +1,12 @@
+.section_Navbar{
+    min-width: 15%;
+    height: 100vh;
+    padding: 0.5rem;
+    background-color: rgb(20, 20, 20);
+}
+.us_detail{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 2rem;
+}

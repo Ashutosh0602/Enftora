@@ -1,0 +1,9 @@
+.main_layout{
+    display: flex;
+}
+.Layout_nav{
+    width: 15%;
+}
+.Layout_section{
+    width: 85%;
+}

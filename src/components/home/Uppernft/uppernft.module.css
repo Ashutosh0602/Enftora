@@ -1,0 +1,57 @@
+.upper_pos{
+    position: relative;
+}
+.upper_pos:hover{
+    /* outline: 2px solid blueviolet; */
+    scale: 1.05;
+    transition: 0.5s all ease;
+}
+.map_display{
+    display: flex;
+    /* width: 85%; */
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-height: 20rem;
+    padding: 0.3rem;
+    margin-top: 0.5rem;
+    /* overflow: hidden; */
+}
+.img_cover_upper{
+width: 14rem;
+height: 15rem;
+position: relative;
+border-radius: 5px;
+overflow: hidden;
+}
+.img_cover_upper>img{
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    object-fit: cover;
+}
+.video_upper{
+    position: absolute;
+    z-index: 100;
+    left: 0%;
+    top: 0%;
+    background-position: center;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.nftName{
+    position: absolute;
+    text-align: left;
+    padding-left: 0.5rem;
+    font-weight: bolder;
+    font-style: italic;
+    font-family: 'Mukta', sans-serif;
+    color: rgb(165, 164, 164);
+    background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0.649) 15%,rgba(255, 255, 255, 0));
+    font-size: 1rem;
+    z-index: 1000;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+}

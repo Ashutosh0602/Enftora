@@ -1,0 +1,151 @@
+.sec_log{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+.left_cont{
+    perspective: 300px;
+    perspective-origin: 50%; 
+    height: 100vh;
+    width: 130vw;
+    overflow: scroll;
+    animation: slide_up 1s ease;
+}
+@keyframes slide_up{
+    0%{
+        transform: translateY(200%);
+        opacity: 0.5;
+    }
+    100%{
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+.login_scroll{
+    height: 100vh;
+    transform: rotateY(10deg);
+    transform-origin: 0;
+    transform-style: preserve-3d;
+}
+.scroll_cont{
+    display: grid;
+    width: 110%;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 100%;
+}
+.scroll_cont_div{
+    padding: 0.3rem;
+    width: 100%;
+}
+.scroll_cont_div>img{
+    width: 100%;
+    height: 100%;
+}
+.blank_cont{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    background-color:rgba(0, 0, 0, 0);
+    background-image:linear-gradient(to right,rgba(64, 64, 64, 0.158)-90% , rgb(0, 0, 0)85%);
+}
+.logo_div>img{
+    width: 7rem;
+    position: absolute;
+    right: 0;
+    margin-right: 1rem;
+}
+.logo_div{    
+    animation: slide_right 0.5s ease;
+    animation-delay: 1.2s;
+    animation-fill-mode: backwards;
+}
+@keyframes slide_right{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.right_cont{
+    position: absolute;
+    padding: 1rem;
+    right: 0;
+    width: 60%;
+    z-index: 100;
+    height: 100vh;
+    background-color: transparent;
+    /* background-image:linear-gradient(to right,rgba(255, 0, 0, 0) 50% , rgba(0, 0, 255, 0.546) 80%); */
+
+}
+div{
+    background-color: transparent;
+text-align: center;
+}
+.write_cont{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: slide_down 1s ease-in;
+    animation-delay: 1.2s;
+    animation-fill-mode: backwards;
+}
+@keyframes slide_down{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.write_cont>div:nth-child(1){
+    font-size: 2rem;
+}
+.write_cont>div:nth-child(2){
+    font-size: 3rem;
+}
+span{
+    font-size: 3rem;
+    color: blueviolet;
+    background-color: transparent;
+}
+.write_cont>div:nth-child(3){
+    font-size: 1.3rem;
+    color: rgb(107, 107, 107);
+    font-weight: 900;
+}
+.write_cont>div:nth-child(4){
+    margin-top: 2rem;
+    animation: slide_pop 0.5s ease-in;
+    animation-delay: 2.3s;
+    animation-fill-mode:backwards;
+}
+@keyframes slide_pop{
+    0%{
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100%{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.login_goog{
+    font-size: 1.6rem;
+    display: inline;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 10px;
+    background-color: blueviolet;
+}
+.goog{
+    width: 10%;
+    background-color: transparent;
+    transform: translateY(40%);
+}
+.login_goog_a{
+    text-decoration: none;
+    background-color:transparent;
+    font-size: 1.5rem;
+}
