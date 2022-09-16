@@ -1,4 +1,4 @@
-import { async } from "@firebase/util";
+import { createSlice } from "@reduxjs/toolkit";
 
 let eth;
 let pol;
@@ -49,7 +49,7 @@ async function ethereum() {
 // }
 
 eth = ethereum().then((dt) => {
-  return dt;
+  return dt[0];
 });
 // pol = polygon().then((dt) => {
 //   return dt;
@@ -60,8 +60,8 @@ eth = ethereum().then((dt) => {
 
 const initalState = {
   ethereum: eth,
-  //   polygon: pol,
-  //   rinkeby: rin,
+  polygon: "djwjw",
+  rinkeby: "djkwhui",
 };
 // const initalState = {
 //   ethereum: async () => {
@@ -75,6 +75,16 @@ const initalState = {
 //   },
 // };
 
+const nftSlice = createSlice({
+  name: "nfts",
+  initialState: initalState,
+  reducers: {
+    polygon(state) {
+      state.polygon = "police";
+    },
+  },
+});
+
 export const IState = initalState;
-export const nftActions = initalState.actions;
-export default initalState.reducer;
+export const nftActions = nftSlice.actions;
+export default nftSlice.reducer;
