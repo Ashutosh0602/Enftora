@@ -47,16 +47,32 @@ asset = intial();
 //   return dt[0];
 // });
 
+async function next(payload) {
+  let assets;
+  const response = await fetch(
+    `https://opensea13.p.rapidapi.com/assets?limit=20&cursor=${payload}&include_orders=false`,
+    options
+  );
+  assets = await response.json();
+  //   console.log(assets);
+  return [assets];
+}
+
 const initalState = {
   assets: asset,
+  //   next: "hello",
+  //   prev:"hello"
 };
 
 const nftSlice = createSlice({
   name: "nfts",
   initialState: initalState,
   reducers: {
-    polygon(state) {
-      state.polygon = "police";
+    nextPage(state, action) {
+      state.assets = next(action.payload);
+    },
+    prevPage(state, action) {
+      state.assets = next(action.payload);
     },
   },
 });

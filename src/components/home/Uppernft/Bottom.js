@@ -9,7 +9,13 @@ export default function Bottom() {
   const [prevpage, setprevpage] = useState();
 
   const dispatch = useDispatch();
-
+  const NextLoad = () => {
+    dispatch(nftActions.nextPage(nextpage));
+  };
+  const PrevLoad = () => {
+    dispatch(nftActions.prevPage(prevpage));
+  };
+  const nextNft = useSelector((state) => state.nfts.next);
   const nfts = useSelector((state) => {
     const nf = state.nfts.assets;
     const promise = nf.then((dt) => {
@@ -18,7 +24,7 @@ export default function Bottom() {
       setprevpage(dt[0].previous);
     });
   });
-  console.log(nextpage, prevpage);
+  // console.log(nextpage, prevpage);
   const design = fullnft.map((ls) => {
     const address = ls["asset_contract"]["address"];
     const address_mod = address.slice(0, 15);
@@ -80,8 +86,9 @@ export default function Bottom() {
       </div>
       <div className={classes.design}>{design}</div>
       <div className={classes.change}>
-        <div>&#8249;</div>
-        <div>&#8250;</div>
+        <div onClick={PrevLoad}>&#8249;</div>
+        <div>{nextNft}</div>
+        <div onClick={NextLoad}>&#8250;</div>
       </div>
     </section>
   );
