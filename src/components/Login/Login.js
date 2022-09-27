@@ -45,15 +45,15 @@ export default function Login(props) {
   useEffect(() => {
     const awaits = async () => {
       const snft = await data;
-      setNft(snft["nfts"]);
+      setNft(snft["assets"]);
     };
     awaits();
   }, []);
 
   nft.map((dt) => {
     const img = dt;
-    if (dt["cached_file_url"] !== null) {
-      img_ls.push(dt["cached_file_url"]);
+    if (dt["image_preview_url"] !== null) {
+      img_ls.push(dt["image_preview_url"]);
     }
   });
 
