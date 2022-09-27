@@ -5,15 +5,20 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function Bottom() {
   const [fullnft, setfullnft] = useState([]);
+  const [nextpage, setnextpage] = useState();
+  const [prevpage, setprevpage] = useState();
+
   const dispatch = useDispatch();
 
   const nfts = useSelector((state) => {
     const nf = state.nfts.assets;
     const promise = nf.then((dt) => {
       setfullnft(dt[0].assets);
+      setnextpage(dt[0].next);
+      setprevpage(dt[0].previous);
     });
   });
-  console.log(fullnft);
+  console.log(nextpage, prevpage);
   const design = fullnft.map((ls) => {
     const address = ls["asset_contract"]["address"];
     const address_mod = address.slice(0, 15);
@@ -64,9 +69,6 @@ export default function Bottom() {
             </div>
           </div>
         </div>
-        <div>
-          <div></div>
-        </div>
       </div>
     );
   });
@@ -77,6 +79,10 @@ export default function Bottom() {
         <div>Assets</div>
       </div>
       <div className={classes.design}>{design}</div>
+      <div className={classes.change}>
+        <div>&#8249;</div>
+        <div>&#8250;</div>
+      </div>
     </section>
   );
 }

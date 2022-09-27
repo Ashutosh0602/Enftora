@@ -80,3 +80,20 @@
     font-size: 0.8rem;
     color: rgb(81, 81, 81);
 }
+.change{
+    display: flex;
+    margin-top: 3rem;
+    justify-content: center;
+}
+.change>div{
+    font-size: 3rem;
+    margin-left: 3rem;
+    cursor: pointer;
+    width: 4rem;
+    color: rgb(81, 81, 81);
+    /* height: 3rem; */
+    background-color: rgb(20, 20, 20);
+}
+.change>div:hover{
+    color: blueviolet;
+}
