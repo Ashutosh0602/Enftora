@@ -62,13 +62,10 @@ export default function Bottom() {
                 <div>{createDt_mod}</div>
               </div>
             </div>
-            <div>
-              <div className={classes.address_space}>
-                <div>:</div>
-                <div>{createDt_mod}</div>
-              </div>
-            </div>
           </div>
+        </div>
+        <div>
+          <div></div>
         </div>
       </div>
     );

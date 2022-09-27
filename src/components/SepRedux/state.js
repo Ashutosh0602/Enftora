@@ -34,7 +34,7 @@ const options = {
 async function intial() {
   let assets;
   const response = await fetch(
-    "https://opensea13.p.rapidapi.com/assets?order_direction=desc&limit=50&include_orders=false",
+    "https://opensea13.p.rapidapi.com/assets?order_direction=desc&limit=30&include_orders=false",
     options
   );
   assets = await response.json();
