@@ -2,8 +2,14 @@ import React, { useState } from "react";
 import classes from "./bottom.module.css";
 import { nftActions } from "../../SepRedux/state";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function Bottom() {
+  const userID = localStorage.getItem("usID");
+
+  // let { path, url } = useRouteMatch();
+  // console.log(`${url}/detail`);
+
   const [fullnft, setfullnft] = useState([]);
   const [nextpage, setnextpage] = useState();
   const [prevpage, setprevpage] = useState();
@@ -15,7 +21,8 @@ export default function Bottom() {
   const PrevLoad = () => {
     dispatch(nftActions.prevPage(prevpage));
   };
-  const nextNft = useSelector((state) => state.nfts.next);
+  const pagecount = useSelector((state) => state.nfts.counter);
+
   const nfts = useSelector((state) => {
     const nf = state.nfts.assets;
     const promise = nf.then((dt) => {
@@ -24,7 +31,7 @@ export default function Bottom() {
       setprevpage(dt[0].previous);
     });
   });
-  // console.log(nextpage, prevpage);
+  // console.log(fullnft);
   const design = fullnft.map((ls) => {
     const address = ls["asset_contract"]["address"];
     const address_mod = address.slice(0, 15);
@@ -38,44 +45,47 @@ export default function Bottom() {
     const createDt_mod = createDt.split("T")[0];
 
     const ID = ls["id"];
+
     return (
-      <div className={classes.asset_hold}>
-        <div className={classes.asset_img_cont}>
-          <img className={classes.asset_img} src={ls["image_url"]} />
-        </div>
-        <div className={classes.short_detail}>
-          <div className={classes.cret_name}>
-            <div>
-              <img src={creator_img} />
-            </div>
-            <div>{ls["name"]}</div>
+      <Link className={classes.link_detail} to={`${ls["id"]}`}>
+        <div className={classes.asset_hold}>
+          <div className={classes.asset_img_cont}>
+            <img className={classes.asset_img} src={ls["image_url"]} />
           </div>
-          <div>
-            <div className={classes.address_space}>
-              <div>Address:</div>
-              <div>{address_mod}...</div>
-            </div>
-            <div>
-              <div className={classes.address_space}>
-                <div>Token:</div>
-                <div>{token_mod}...</div>
+          <div className={classes.short_detail}>
+            <div className={classes.cret_name}>
+              <div>
+                <img src={creator_img} />
               </div>
+              <div>{ls["name"]}</div>
             </div>
             <div>
               <div className={classes.address_space}>
-                <div>ID:</div>
-                <div>{ID}</div>
+                <div>Address:</div>
+                <div>{address_mod}...</div>
               </div>
-            </div>
-            <div>
-              <div className={classes.address_space}>
-                <div>Create Date:</div>
-                <div>{createDt_mod}</div>
+              <div>
+                <div className={classes.address_space}>
+                  <div>Token:</div>
+                  <div>{token_mod}...</div>
+                </div>
+              </div>
+              <div>
+                <div className={classes.address_space}>
+                  <div>ID:</div>
+                  <div>{ID}</div>
+                </div>
+              </div>
+              <div>
+                <div className={classes.address_space}>
+                  <div>Create Date:</div>
+                  <div>{createDt_mod}</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </Link>
     );
   });
   return (
@@ -87,7 +97,7 @@ export default function Bottom() {
       <div className={classes.design}>{design}</div>
       <div className={classes.change}>
         <div onClick={PrevLoad}>&#8249;</div>
-        <div>{nextNft}</div>
+        <div>{pagecount}</div>
         <div onClick={NextLoad}>&#8250;</div>
       </div>
     </section>

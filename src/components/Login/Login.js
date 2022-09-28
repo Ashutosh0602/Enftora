@@ -123,7 +123,7 @@ export default function Login(props) {
               <div className={classes.login_goog}>
                 <Link
                   className={classes.login_goog_a}
-                  to={`/auth/:${props.sID}`}
+                  to={`/auth/${props.sID}`}
                 >
                   Continue
                 </Link>

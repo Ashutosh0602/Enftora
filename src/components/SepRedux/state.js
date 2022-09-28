@@ -43,9 +43,6 @@ async function intial() {
 }
 
 asset = intial();
-// asset = intial().then((dt) => {
-//   return dt[0];
-// });
 
 async function next(payload) {
   let assets;
@@ -59,6 +56,7 @@ async function next(payload) {
 }
 
 const initalState = {
+  counter: 0,
   assets: asset,
   //   next: "hello",
   //   prev:"hello"
@@ -69,9 +67,11 @@ const nftSlice = createSlice({
   initialState: initalState,
   reducers: {
     nextPage(state, action) {
+      state.counter++;
       state.assets = next(action.payload);
     },
     prevPage(state, action) {
+      state.counter--;
       state.assets = next(action.payload);
     },
   },
