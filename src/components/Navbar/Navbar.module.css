@@ -10,3 +10,33 @@
     align-items: center;
     margin-bottom: 2rem;
 }
+.NavLink_cont{
+    text-align: right;
+    margin: 1rem 1rem 1rem 1rem;
+}
+.NavLink_head{
+    text-align: left;
+    font-size: 1.5rem;
+}
+.Active_nav{
+    color: blueviolet;
+    text-decoration: none;
+    background-color: transparent;
+
+}
+.NavLink{
+    color: rgb(121,121,121);
+    text-decoration: none;
+    background-color: transparent;
+}
+.NavLink:hover{
+    color: rgb(152, 75, 223);
+}
+.NavLink_hover{
+    display: inline;
+    font-size: 2rem;
+    color: rgba(137, 43, 226, 0.311);
+    position: relative;
+    top: 750%;
+    /* transform: translateY(-100%); */
+}

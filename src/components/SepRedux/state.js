@@ -1,28 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 let asset;
-let pol;
-let rin;
 
-// const options = {
-//   method: "GET",
-//   headers: {
-//     "Content-Type": "application/json",
-//     Authorization: "d7d612ee-b448-47eb-8155-f5c87aa89ebf",
-//   },
-// };
-
-// async function ethereum() {
-//   let ethereum;
-//   const response = await fetch(
-//     `https://api.nftport.xyz/v0/nfts?chain=ethereum&include=all`,
-//     options
-//   );
-
-//   ethereum = await response.json();
-
-//   return [ethereum];
-// }
 const options = {
   method: "GET",
   headers: {
@@ -55,9 +34,21 @@ async function next(payload) {
   return [assets];
 }
 
+async function slug(payload) {
+  let assets;
+  const response = await fetch(
+    `https://opensea13.p.rapidapi.com/assets?collection_slug=${payload}&limit=20&include_orders=false`,
+    options
+  );
+  assets = await response.json();
+  //   console.log(assets);
+  return [assets];
+}
+
 const initalState = {
   counter: 0,
   assets: asset,
+  slugs: [],
   //   next: "hello",
   //   prev:"hello"
 };
@@ -73,6 +64,9 @@ const nftSlice = createSlice({
     prevPage(state, action) {
       state.counter--;
       state.assets = next(action.payload);
+    },
+    slugcoll(state, action) {
+      state.slugs = slug(action.payload);
     },
   },
 });
