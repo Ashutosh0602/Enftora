@@ -20,7 +20,7 @@
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "bcc8098ffamshce8bb38499c7410p14e8e6jsnac5a1d470508",
+    "X-RapidAPI-Key": "ad11b2b852mshb911cd884c7238ep1fda53jsnf320c74be2de",
     "X-RapidAPI-Host": "opensea13.p.rapidapi.com",
   },
 };
