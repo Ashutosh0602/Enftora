@@ -1,6 +1,5 @@
 {
   "hosting": {
-    "site":"enftora",
     "public": "build",
     "ignore": [
       "firebase.json",

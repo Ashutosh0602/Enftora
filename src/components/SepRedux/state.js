@@ -69,11 +69,46 @@ async function addresscoll(payload) {
   return [assets];
 }
 
+async function addOwner(payload) {
+  let assets;
+
+  let response = await fetch(
+    `https://opensea13.p.rapidapi.com/collections?asset_owner=${payload}&limit=30`,
+    options
+  );
+
+  assets = await response.json();
+  //   console.log(assets);
+  return [assets];
+}
+
+async function sasset(payload) {
+  let assets;
+  let response;
+  if (payload == "") {
+    response = await fetch(
+      `https://opensea13.p.rapidapi.com/asset/0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb/1?include_orders=false`,
+      options
+    );
+  } else {
+    response = await fetch(
+      `https://opensea13.p.rapidapi.com/asset/${payload}/1?include_orders=false`,
+      options
+    );
+  }
+
+  assets = await response.json();
+  //   console.log(assets);
+  return [assets];
+}
+const intailAsset = sasset("");
 const initalState = {
   counter: 0,
   assets: asset,
   slugs: asset,
   address: asset,
+  addressowner: asset,
+  singleasset: intailAsset,
   //   next: "hello",
   //   prev:"hello"
 };
@@ -95,6 +130,12 @@ const nftSlice = createSlice({
     },
     address(state, action) {
       state.address = addresscoll(action.payload);
+    },
+    addowner(state, action) {
+      state.addressowner = addOwner(action.payload);
+    },
+    callSasset(state, action) {
+      state.singleasset = sasset(action.payload);
     },
   },
 });

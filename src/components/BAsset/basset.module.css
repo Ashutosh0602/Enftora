@@ -1,0 +1,40 @@
+.detail_sec {
+  padding: 2rem;
+  height: 100vh;
+  overflow: scroll;
+}
+.det_add {
+  text-align: left;
+  font-size: 1.3rem;
+  color: rgb(120, 119, 119);
+}
+.det_add:nth-child(2),
+.det_add:nth-child(3) {
+  font-size: 1.5rem;
+  color: rgb(61, 61, 61);
+}
+.def_nft_img_cont {
+  width: 20rem;
+  margin-right: 2rem;
+}
+.def_nft_img {
+  width: 100%;
+}
+.det_nft {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  margin-top: 3rem;
+}
+.det_nft_inn {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.det_nft_inn > div:nth-child(1) {
+  margin-right: 6rem;
+}
+.det_nft_inn > div {
+  color: rgb(91, 91, 91);
+  font-size: 0.9rem;
+}
