@@ -103,6 +103,7 @@ async function sasset(payload) {
 }
 const intailAsset = sasset("");
 const initalState = {
+  loader: false,
   counter: 0,
   assets: asset,
   slugs: asset,
@@ -117,6 +118,12 @@ const nftSlice = createSlice({
   name: "nfts",
   initialState: initalState,
   reducers: {
+    changeloader(state) {
+      state.loader = true;
+    },
+    offloader(state) {
+      state.loader = false;
+    },
     nextPage(state, action) {
       state.counter++;
       state.assets = next(action.payload);

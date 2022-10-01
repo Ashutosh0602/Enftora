@@ -3,6 +3,7 @@ import classes from "./bottom.module.css";
 import { nftActions } from "../../SepRedux/state";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Waiting from "../../waiting/Waiting";
 
 export default function Bottom() {
   const userID = localStorage.getItem("usID");
@@ -17,15 +18,20 @@ export default function Bottom() {
   const dispatch = useDispatch();
   const NextLoad = () => {
     dispatch(nftActions.nextPage(nextpage));
+    dispatch(nftActions.changeloader());
   };
   const PrevLoad = () => {
     dispatch(nftActions.prevPage(prevpage));
+    dispatch(nftActions.changeloader());
   };
   const pagecount = useSelector((state) => state.nfts.counter);
 
+  const load = useSelector((state) => state.nfts.loader);
+  console.log(load);
   const nfts = useSelector((state) => {
     const nf = state.nfts.assets;
     const promise = nf.then((dt) => {
+      dispatch(nftActions.offloader());
       setfullnft(dt[0].assets);
       setnextpage(dt[0].next);
       setprevpage(dt[0].previous);
@@ -94,7 +100,13 @@ export default function Bottom() {
         <div></div>
         <div>Assets</div>
       </div>
-      <div className={classes.design}>{design}</div>
+
+      {load ? (
+        <div>{<Waiting />}</div>
+      ) : (
+        <div className={classes.design}>{design}</div>
+      )}
+
       <div className={classes.change}>
         <div onClick={PrevLoad}>&#8249;</div>
         <div>{pagecount}</div>

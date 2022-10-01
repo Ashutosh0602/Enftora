@@ -18,7 +18,7 @@ export default function Navbar() {
           <div className={classes.NavLink_head}>
             <NavLink
               style={{
-                "text-decoration": "none",
+                textDecoration: "none",
                 background: "transparent",
                 fontSize: "1.5rem",
               }}
