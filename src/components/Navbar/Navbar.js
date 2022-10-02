@@ -97,6 +97,17 @@ export default function Navbar() {
                 {/* <div className={classes.NavLink_hover}>&laquo;</div> */}
               </NavLink>
             </div>
+            <div>
+              <input
+                className={classes.range}
+                onClick={(e) => console.log(e.target.value)}
+                type="range"
+                id="vol"
+                name="vol"
+                min="0"
+                max="50"
+              />
+            </div>
           </div>
         </div>
       </div>

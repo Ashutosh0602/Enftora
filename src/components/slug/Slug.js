@@ -3,22 +3,27 @@ import classes from "./slug.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { nftActions } from "../SepRedux/state";
 import { Link } from "react-router-dom";
+import Waiting from "../waiting/Waiting";
 
 export default function Slug() {
   let inputword;
   const [fullnft, setfullnft] = useState([]);
 
   const dispatch = useDispatch();
+
+  const load = useSelector((state) => state.nfts.loader);
+
   const slug = useSelector((state) => {
     const nf = state.nfts.slugs;
     const promise = nf.then((dt) => {
       setfullnft(dt[0].assets);
+      dispatch(nftActions.offloader());
     });
   });
-  // console.log(inputword);
-  console.log(fullnft);
+  console.log(load);
   function submit() {
     dispatch(nftActions.slugcoll(inputword));
+    dispatch(nftActions.changeloader());
   }
 
   const design = fullnft.map((ls) => {
@@ -87,7 +92,13 @@ export default function Slug() {
         />
         <button onClick={submit}>Check</button>
       </div>
-      <div className={classes.design}>{design}</div>
+      {!load ? (
+        <div className={classes.design}>{design}</div>
+      ) : (
+        <div>{<Waiting />}</div>
+      )}
+      {/* <div>{<Waiting />}</div> */}
+      {/* <div className={classes.design}>{design}</div> */}
     </section>
   );
 }
